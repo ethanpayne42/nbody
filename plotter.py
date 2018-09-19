@@ -16,13 +16,12 @@ plt.scatter([0],[0],color='k')
 plt.xlabel(r'$x$')
 plt.ylabel(r'$y$')
 
-val = 2.0
-step = np.round(val/4,1)
+max_v = np.max(np.concatenate([xs,ys]))
+max_v += 1
+print(max_v)
 
-# plt.ylim(-val,val)
-# plt.xlim(-val,val)
-# plt.xticks(np.arange(-val, val+0.01, step=step))
-# plt.yticks(np.arange(-val, val+0.01, step=step))
+plt.ylim(-max_v,max_v)
+plt.xlim(-max_v,max_v)
 
 plt.tight_layout()
 plt.show()

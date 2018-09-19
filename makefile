@@ -2,7 +2,8 @@ FC=gfortran
 FFLAGS=-O3 -Wall -Wextra #-fdefault-real-8
 
 #POTEN= poten-isochrone.f90 # choice of potential used in the code
-POTEN= poten-harmonic.f90
+#POTEN= poten-harmonic.f90
+POTEN=poten-kepler.f90
 SRC= ${POTEN} utils.f90 step.f90 init.f90 main.f90
 OBJ=${SRC:.f90=.o}
 
