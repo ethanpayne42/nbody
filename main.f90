@@ -20,7 +20,7 @@ program nbody
 
   ! Set initial conditions and timestep
   call initialise(x, v, v_fac, r)
-  tmax = 2.*pi !10.0*pi
+  tmax = 10.0*pi !10.0*pi
   nsteps = int(tmax/dt) + 1 ! int() converts to integer, rounding down
 
   ! Get initial acceleration
