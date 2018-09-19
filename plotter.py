@@ -19,10 +19,10 @@ plt.ylabel(r'$y$')
 val = 2.0
 step = np.round(val/4,1)
 
-plt.ylim(-val,val)
-plt.xlim(-val,val)
-plt.xticks(np.arange(-val, val+0.01, step=step))
-plt.yticks(np.arange(-val, val+0.01, step=step))
+# plt.ylim(-val,val)
+# plt.xlim(-val,val)
+# plt.xticks(np.arange(-val, val+0.01, step=step))
+# plt.yticks(np.arange(-val, val+0.01, step=step))
 
 plt.tight_layout()
 plt.show()

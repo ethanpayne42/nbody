@@ -1,7 +1,9 @@
 FC=gfortran
 FFLAGS=-O3 -Wall -Wextra #-fdefault-real-8
 
-SRC= utils.f90 poten.f90 step.f90 main.f90
+#POTEN= poten-isochrone.f90 # choice of potential used in the code
+POTEN= poten-harmonic.f90
+SRC= ${POTEN} utils.f90 step.f90 init.f90 main.f90
 OBJ=${SRC:.f90=.o}
 
 %.o: %.f90
@@ -10,9 +12,10 @@ OBJ=${SRC:.f90=.o}
 nbody: $(OBJ)
 	$(FC) $(FFLAGS) -o $@ $(OBJ)
 
-main.o: poten.o step.o
-
-step.o: poten.o
+plot: nbody
+	./nbody
+	python plotter.py
+	python t_plotter.py
 
 clean: $(OBJ)
 	rm *.o *.mod nbody
