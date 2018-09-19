@@ -3,8 +3,10 @@ program nbody
   use step
   implicit none
   real :: x(3), v(3), a(3)
+  real :: energy
+  real :: angmom(3)
   real, parameter :: pi = 3.141592654
-  real :: e,dt, tmax, time
+  real :: e, dt, tmax, time
   integer :: nsteps, i
 
   ! Set e and dt
@@ -27,10 +29,11 @@ program nbody
   do i=1,nsteps
     call step_leapfrog(x, v, a, dt)
     time = i*dt
-    print*,'step ',i,' time ',time,' x = ',x,' v = ',v
+    !print*,'step ',i,' time ',time,' x = ',x,' v = ',v
     write(66,*) x, v, a, time
   enddo
 
   close(unit=66)
+  print*,'finished!'
 
 end program nbody
