@@ -1,7 +1,7 @@
 FC=gfortran
 FFLAGS=-O3 -Wall -Wextra #-fdefault-real-8
 
-SRC= poten.f90 step.f90 main.f90
+SRC= utils.f90 poten.f90 step.f90 main.f90
 OBJ=${SRC:.f90=.o}
 
 %.o: %.f90

@@ -1,7 +1,9 @@
 program nbody
   use poten
   use step
+  use utils
   implicit none
+
   real :: x(3), v(3), a(3)
   real :: energy
   real :: angmom(3)
@@ -29,8 +31,13 @@ program nbody
   do i=1,nsteps
     call step_leapfrog(x, v, a, dt)
     time = i*dt
+
+    ! Conserved quantities
+    call cross_product(x,v,angmom)
+    energy = 0.5*dot_product(v,v) + potential(x)
     !print*,'step ',i,' time ',time,' x = ',x,' v = ',v
-    write(66,*) x, v, a, time
+    print*,' angular momentum is ',angmom,'energy is ',energy
+    write(66,*) x, v, a, energy, angmom, time
   enddo
 
   close(unit=66)

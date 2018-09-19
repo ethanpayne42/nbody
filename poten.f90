@@ -11,4 +11,12 @@ subroutine get_accel(x, a)
   a = -x/(r2*r) ! involves vectors on both sides - Fortran can do this
 end subroutine get_accel
 
+real function potential(x)
+  real, intent(in) :: x(3)
+  real :: r, r2
+  r2 = dot_product(x,x)
+  r = sqrt(r2)
+  potential = -1.0/r
+end function potential
+
 end module poten
