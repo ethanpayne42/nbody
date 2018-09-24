@@ -9,7 +9,7 @@ program nbody
   real :: energy
   real :: angmom(3)
   real, parameter :: pi = 3.141592654
-  real :: v_fac, dt, tmax, time, r
+  real :: v_fac, dt, tmax, time, r, e
   integer :: nsteps, i
 
   ! Set e and dt
@@ -20,7 +20,16 @@ program nbody
 
   ! Set initial conditions and timestep
   call initialise(x, v, v_fac, r)
-  tmax = 10.0*pi !10.0*pi
+
+  ! set eccentricity if we want to work with that instead
+  if (v_fac==0. .and. r==1.) then
+    print*,'Enter eccentricity:'
+    read*,e
+    x = (/1-e,0.,0./)
+    v = (/0.,sqrt((1.+e)/(1.-e)),0./)
+  end if
+
+  tmax = 10.*pi !10.0*pi
   nsteps = int(tmax/dt) + 1 ! int() converts to integer, rounding down
 
   ! Get initial acceleration

@@ -30,4 +30,4 @@ contains
     vcirc = sqrt(r2/(term*(b+term)**2))
     print*,vcirc
   end function vcirc
-  end module poten
+end module poten

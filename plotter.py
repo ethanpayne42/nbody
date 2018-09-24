@@ -6,9 +6,6 @@ results = np.genfromtxt('results.out')
 xs = results[:,0]
 ys = results[:,1]
 
-#e = 0.0
-#dt = 0.01
-
 f = plt.figure(figsize=[6,6])
 
 plt.plot(xs,ys)
@@ -16,8 +13,8 @@ plt.scatter([0],[0],color='k')
 plt.xlabel(r'$x$')
 plt.ylabel(r'$y$')
 
-max_v = np.max(np.concatenate([xs,ys]))
-max_v += 1
+max_v = np.max(np.concatenate([abs(xs),abs(ys)]))
+max_v += 0.2
 print(max_v)
 
 plt.ylim(-max_v,max_v)
