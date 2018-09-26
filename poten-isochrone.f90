@@ -28,6 +28,5 @@ contains
     r2 = r**2
     term = sqrt(r2 + b*b)
     vcirc = sqrt(r2/(term*(b+term)**2))
-    print*,vcirc
   end function vcirc
 end module poten
