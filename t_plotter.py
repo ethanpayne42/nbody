@@ -7,7 +7,6 @@ try:
     import matplotlib.cm as cm
     import matplotlib.mlab as mlab
     import matplotlib.pyplot as plt
-    from scipy.interpolate import InterpolatedUnivariateSpline as spline
 
     params = {
        'axes.labelsize': 18,

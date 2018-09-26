@@ -7,7 +7,6 @@ try:
     import matplotlib.cm as cm
     import matplotlib.mlab as mlab
     import matplotlib.pyplot as plt
-    from scipy.interpolate import InterpolatedUnivariateSpline as spline
 
     params = {
        'axes.labelsize': 18,
@@ -42,7 +41,6 @@ plt.ylabel(r'$y$')
 
 max_v = np.max(np.concatenate([abs(xs),abs(ys)]))
 max_v += 0.2
-print(max_v)
 
 plt.ylim(-max_v,max_v)
 plt.xlim(-max_v,max_v)
