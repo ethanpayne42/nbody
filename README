@@ -1,0 +1,47 @@
+### information about the code
+
+This code was written for ASP3012 Computational Lab 2, and will solve
+the equation of motion of a particle in a Keplerian potential, given the
+required initial condtions in terms of the eccentricity, e, and the timestep
+for the integrator.
+
+### Running the code
+
+In order to run the code, the user simply needs to first compile the code.
+This is done by simply executing
+```
+make
+```
+in the folder where the code was extracted. Then the user can run the
+code with
+```
+./nbody
+```
+which begins the code, with the user then required to input the eccentricity and
+timestep, with an example shown below:
+```
+ Please enter e and dt
+0.7 0.01
+```
+Following this, the code will present the output of the angular momentum vector,
+and the total energy of the test particle in orbit. The result is saved in
+`results.out`.
+
+### Plotting
+
+To plot the result, simply run
+```
+python plotter.py
+```
+to plot the orbit in the x-y plane. If the user moves files with dt=0.01, 0.02,
+and 0.04 into files called `results-dt****.out` where `****` correspond to the
+timestep, then the user can plot the convergence to the exact energy and the
+conservation of angular momentum as functions of time, by simply running
+```
+python converge.py
+```
+The command
+```
+python t_plotter.py
+```
+will make the same plots but only for the `results.out` file. 
