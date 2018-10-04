@@ -19,7 +19,7 @@ subroutine get_accel(x, a, m, np)
         dx = x(:,i) - x(:,j)
         r2 = dot_product(dx,dx)
         r = sqrt(r2)
-        a(:,i) = a(:,i) - m(j)*dx/r**3
+        a(:,i) = a(:,i) - m(j)*dx/(r*r2)
 
       endif
     enddo

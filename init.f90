@@ -15,7 +15,7 @@ contains
     m(1) = 1.0
     m(2) = 1.0
     mtot = m(1) + m(2)
-    e = 0.0
+    e = 0.7
     a = 1.0
     r = a*(1+e)
     v0 = sqrt(a*(1-e**2)*mtot)/r

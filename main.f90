@@ -4,6 +4,7 @@ program nbody
   use utils
   use init
   use output
+  use energy
   implicit none
 
   integer, parameter :: maxp=1000
@@ -12,7 +13,10 @@ program nbody
   real :: dt, tmax, time
   integer :: nsteps, i, np
   integer :: nout
-  real dtout
+  real :: dtout
+
+  real :: mom(3), angm(3)
+  real :: en
 
   dt = 0.01 ! timestep
   tmax = 10.
@@ -26,12 +30,15 @@ program nbody
   call initialise(x, v, m, np, maxp)
   call get_accel(x, a, m, np)
 
-
+  open(unit=66,file='data/nbody.ev',status='replace')
   do i=1,nsteps
     call step_leapfrog(x, v, a, m, dt, np)
     time = i*dt
     if (mod(i,nout).eq.0) call write_output(x, v, m, np, time)
-
+    call get_conserved(x,v,m,en,mom,angm,np)
+    ! print*,' t = ',time,' energy = ',en,' mom = ',mom,&
+    ! ' angm = ',angm
+    write(66,*) time,en,mom,angm
   enddo
 
   close(unit=66)
