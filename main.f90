@@ -3,43 +3,35 @@ program nbody
   use step
   use utils
   use init
+  use output
   implicit none
 
-  real :: x(3), v(3), a(3)
-  real :: energy
-  real :: angmom(3)
-  real, parameter :: pi = 3.141592654
-  real :: v_fac, dt, tmax, time, r, e
-  integer :: nsteps, i
+  integer, parameter :: maxp=1000
+  real :: x(3,maxp), v(3,maxp), a(3,maxp)
+  real :: m(maxp)
+  real :: dt, tmax, time
+  integer :: nsteps, i, np
+  integer :: nout
+  real dtout
 
-  ! Set e and dt
-  print*,'Please enter factor times v_circ and dt'
-  read*,v_fac,dt
-  print*,'Please set initial radius of orbit'
-  read*,r
+  dt = 0.01 ! timestep
+  tmax = 10.
+  nsteps = int(tmax/dt)+1
+
+  ! write parameters
+  dtout = 0.1
+  nout = nint(dtout/dt) ! get number of steps
 
   ! Set initial conditions and timestep
-  call initialise(x, v, v_fac, r)
+  call initialise(x, v, m, np, maxp)
+  call get_accel(x, a, m, np)
 
-  tmax = 10.*pi !10.0*pi
-  nsteps = int(tmax/dt) + 1 ! int() converts to integer, rounding down
-
-  ! Get initial acceleration
-  call get_accel(x, a)
-
-  ! Open write file
-  open(unit=66,file='results.out',status='replace')
 
   do i=1,nsteps
-    call step_leapfrog(x, v, a, dt)
+    call step_leapfrog(x, v, a, m, dt, np)
     time = i*dt
+    if (mod(i,nout).eq.0) call write_output(x, v, m, np, time)
 
-    ! Conserved quantities
-    call cross_product(x,v,angmom)
-    energy = 0.5*dot_product(v,v) + potential(x)
-    !print*,'step ',i,' time ',time,' x = ',x,' v = ',v
-    !print*,' angular momentum is ',angmom,'energy is ',energy
-    write(66,*) x, v, a, energy, angmom, time
   enddo
 
   close(unit=66)
