@@ -18,7 +18,9 @@ program nbody
   real :: mom(3), angm(3)
   real :: en
 
-  dt = 0.01 ! timestep
+  !dt = 0.01 ! timestep
+  print*,'Enter the timestep, dt'
+  read*,dt
   tmax = 10.
   nsteps = int(tmax/dt)+1
 

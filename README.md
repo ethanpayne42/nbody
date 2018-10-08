@@ -1,60 +1,58 @@
-### information about the code
+### Information about the code
 
 This code was written for Monash's ASP3012 class on Stars and Galaxies.
 
-The code as it stands for this submission allows the user to plot orbits for
-three different potentials:
-1. Keplerian potentials,
-2. Isochrone potentials, and
-3. Spherical harmonic potentials
+The code as it stands for this submission allows the user simulate nbody
+dynamics by inserting the desired initial conditions. For this work, however,
+the code is simply dealing with the 2-body problem, and simulating the result
+of this calculation.
 
-Furthermore, the code has the ability to analyse the data and plot the total
-energy and angular momentum of the system, ensuring physical conservation laws
-are obeyed.
+**All plots are made with splash** (god save my soul, I have little idea what I'm doing with it and I really want to do simple stuff like color the 2nd mass' points as red or something but nooooooooooooo, or call the folder `data/` so that I don't need to `cd` into it or anything but, nooooooooooooo)...
 
-### Running the code and plotting
+### Running the code
 
 In order to run the code, first compile the code by running
 ```
 make
 ```
-in the folder where the files are located. Then the user can then either run the
-code to output a plot using simply `./nbody` or if the user wants to also
-immediately see plots, the user can run
-```
-make plot
-```
-which compiles and runs the code, and also runs the plotting scripts following
-the execution of the integrator.
-
-When this is run, the user will be prompted to
-enter the choice of the factor coefficient of the circular velocity for the
-initial conditions of the orbit, as well as the time step and the initial radial
-starting location. An example is shown below:
+in the folder where the files are located. Then the user can then run
+the code to output a plot using simply `./nbody`. Following this, the user is
+given some prompts for the input of the semi-major axis, eccentricity and
+timestep. An example is shown below:
 ```
 ./nbody
- Please enter factor times v_circ and dt
-0.5 0.01
- Please set initial radius of orbit
-1.0
- finished!
-python plotter.py
-python t_plotter.py
+ Enter the timestep, dt
+0.01
+ Enter the eccentricity and semi-major axis:
+0.0 1.0
 ```
-where `plotter.py` and `t_plotter.py` plot the orbit and the conserved
-quantities respectively. This will output the data to `results.out`, and plot
-orbit, total energy and the z-direction of the angular momentum.
+From this, the data is then saved as snapshots in `snap_*` files
+in the `data/` directory which also contains the default settings required for
+plotting with the tool `splash`. Before discussing plotting, we also save the
+total energy of the system, total linear momentum, and total angular momentum
+as a function of time.
 
-### Changing potentials
+### Plotting the result
 
-In order to use different potentials, the user needs to edit the `makefile` to
-replace the `POTEN` variable with the desired potential. The lines for this are
-written as such
+To plot the results, you need to enter the `data` directory with `cd data`.
+Then start up splash on the `snap_*` files,
 ```
-# choice of potential used in the code
-#POTEN=poten-isochrone.f90
-#POTEN=poten-harmonic.f90
-POTEN=poten-kepler.f90
+splash snap_00*
 ```
-Comment out the two undesired potentials and then make the code again, and
-everything will work with the new potentials. 
+Now, if the code was downloaded from GitHub, this will be fine, however, if
+downloaded from _Moodle_, the `columns`, `evsplash.columns`,
+`splash.defaults`, and `splash.limits` files need to be moved into the data
+folder such as
+```
+mv columns.txt data/columns
+```
+repeat for the other files, note that the `.txt` extension needs to be
+removed. Once done, the user can once again tart up splash and select the
+desired plots to show.
+
+Similarly, one can plot the general data for the system, such as energy by
+using
+```
+splash -ev nbody.ev
+```
+and again choosing the appropriate plots.
