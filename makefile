@@ -17,6 +17,7 @@ plot: nbody
 	python plotter.py
 	#python time_plotter.py
 	#python t_plotter.py
+	python 3D_plotter.py
 
 clean: $(OBJ)
 	rm *.o *.mod nbody

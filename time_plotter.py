@@ -44,17 +44,19 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
-f = plt.figure(figsize=[6,6])
+f = plt.figure(figsize=[9,6])
 
 plt.plot(ts,np.sqrt(xs**2+ys**2), label=r'$x$')
-plt.axvline(x=2*3.55431)
-plt.axvline(x=4*3.55431)
-plt.axvline(x=6*3.55431)
-plt.axvline(x=8*3.55431)
+plt.axvline(x=2*3.55431,color='grey',linestyle='--')
+plt.axvline(x=4*3.55431,color='grey',linestyle='--')
+plt.axvline(x=6*3.55431,color='grey',linestyle='--')
+plt.axvline(x=8*3.55431,color='grey',linestyle='--')
 #plt.axvline(x=12*np.pi)
 
 plt.xlabel(r'$t$')
-plt.ylabel(r'radial component')
+plt.ylabel(r'$R$')
+
+plt.xlim(0,30)
 
 plt.tight_layout()
 plt.show()

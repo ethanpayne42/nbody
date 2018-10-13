@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
 
 # Imports for plotting
 import matplotlib as mpl
@@ -26,41 +27,20 @@ results = np.genfromtxt('results.out')
 xs = results[:,0]
 ys = results[:,1]
 zs = results[:,2]
+ts = results[:,-1]
 
-#e = 0.0
-#dt = 0.01
+fig = plt.figure(figsize=[6,6])
+ax = fig.add_subplot(111, projection='3d')
 
-f = plt.figure(figsize=[6,6])
+ax.scatter([0],[0],[0],color='k')
 
-plt.plot(xs,ys)
-plt.scatter([0],[0],color='k')
-plt.xlabel(r'$x$')
-plt.ylabel(r'$y$')
-
-val = 2.0
-step = np.round(val/4,1)
-
-# plt.ylim(-val,val)
-# plt.xlim(-val,val)
-# plt.xticks(np.arange(-val, val+0.01, step=step))
-# plt.yticks(np.arange(-val, val+0.01, step=step))
-
+ax.plot(xs,ys,zs)
 plt.axis('equal')
+
+ax.set_xlabel(r'$x$')
+ax.set_ylabel(r'$y$')
+ax.set_zlabel(r'$z$')
+
 plt.tight_layout()
-plt.show()
 
-f = plt.figure(figsize=[6,6])
-
-plt.plot(xs,zs)
-plt.scatter([0],[0],color='k')
-plt.xlabel(r'$x$')
-plt.ylabel(r'$z$')
-
-# plt.ylim(-val,val)
-# plt.xlim(-val,val)
-# plt.xticks(np.arange(-val, val+0.01, step=step))
-# plt.yticks(np.arange(-val, val+0.01, step=step))
-
-plt.axis('equal')
-plt.tight_layout()
 plt.show()
