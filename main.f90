@@ -9,18 +9,27 @@ program nbody
   real :: energy
   real :: angmom(3)
   real, parameter :: pi = 3.141592654
-  real :: v_fac, dt, tmax, time, r
-  integer :: nsteps, i
+  real :: v_fac_y, v_fac_z, dt, tmax, time, r
+  integer :: nsteps, i, v0_choice
+
+  print*,'Select multiple of factor '
+  print*, '(0) vcirc'
+  print*, '(1) v0'
+  read*, v0_choice
 
   ! Set e and dt
-  print*,'Please enter factor times v_circ and dt'
-  read*,v_fac,dt
+  print*,'Please enter y factor  to times by v_circ or v0'
+  read*,v_fac_y
+  print*,'Please enter z factor  to times by v_circ or v0'
+  read*,v_fac_z
+  print*,'Please enter the timestep'
+  read*,dt
   print*,'Please set initial radius of orbit'
   read*,r
 
   ! Set initial conditions and timestep
-  call initialise(x, v, v_fac, r)
-  tmax = 2.*pi !10.0*pi
+  call initialise(x, v, v_fac_y, v_fac_z, v0_choice, r)
+  tmax = 100.*pi !10.0*pi
   nsteps = int(tmax/dt) + 1 ! int() converts to integer, rounding down
 
   ! Get initial acceleration

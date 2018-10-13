@@ -26,44 +26,35 @@ results = np.genfromtxt('results.out')
 xs = results[:,0]
 ys = results[:,1]
 zs = results[:,2]
+ts = results[:,-1]
 
 #e = 0.0
 #dt = 0.01
 
 f = plt.figure(figsize=[6,6])
 
-plt.plot(xs,ys)
-plt.scatter([0],[0],color='k')
-plt.xlabel(r'$x$')
-plt.ylabel(r'$y$')
+plt.plot(ts,xs, label=r'$x$')
+plt.plot(ts,ys, label=r'$y$')
+plt.plot(ts,zs, label=r'$z$')
 
-val = 2.0
-step = np.round(val/4,1)
+plt.xlabel(r'$t$')
+plt.ylabel(r'coordinate')
 
-# plt.ylim(-val,val)
-# plt.xlim(-val,val)
-# plt.xticks(np.arange(-val, val+0.01, step=step))
-# plt.yticks(np.arange(-val, val+0.01, step=step))
-
-plt.axis('equal')
+plt.legend()
 plt.tight_layout()
 plt.show()
 
 f = plt.figure(figsize=[6,6])
 
-plt.plot(xs,zs)
-plt.scatter([0],[0],color='k')
-plt.xlabel(r'$x$')
-plt.ylabel(r'$z$')
+plt.plot(ts,np.sqrt(xs**2+ys**2), label=r'$x$')
+plt.axvline(x=2*3.55431)
+plt.axvline(x=4*3.55431)
+plt.axvline(x=6*3.55431)
+plt.axvline(x=8*3.55431)
+#plt.axvline(x=12*np.pi)
 
-val = 2.0
-step = np.round(val/4,1)
+plt.xlabel(r'$t$')
+plt.ylabel(r'radial component')
 
-# plt.ylim(-val,val)
-# plt.xlim(-val,val)
-# plt.xticks(np.arange(-val, val+0.01, step=step))
-# plt.yticks(np.arange(-val, val+0.01, step=step))
-
-plt.axis('equal')
 plt.tight_layout()
 plt.show()
