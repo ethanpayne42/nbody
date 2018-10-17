@@ -21,11 +21,11 @@ program nbody
   !dt = 0.01 ! timestep
   print*,'Enter the timestep, dt'
   read*,dt
-  tmax = 10.
+  tmax = 2000.
   nsteps = int(tmax/dt)+1
 
   ! write parameters
-  dtout = 0.1
+  dtout = 10.
   nout = nint(dtout/dt) ! get number of steps
 
   ! Set initial conditions and timestep

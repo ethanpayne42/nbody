@@ -12,7 +12,7 @@
  IPLOTLINE=F,
  LINESTYLE=          1,
  LINECOLOUR=          1,
- IMARKTYPE=         17,          4,         17,          1,          3,
+ IMARKTYPE=          1,          4,         17,          1,          3,
   7*1          ,
  IPLOTPARTOFTYPE=T, 11*F,
  PLOTONRENDERINGS= 12*F,
@@ -37,9 +37,9 @@
  NACROSS=          1,
  NDOWN=          1,
  INTERACTIVE=T,
- IADAPT=F,
+ IADAPT=T,
  IADAPTCOORDS=F,
- NSTEPSPERPAGE=       1000,
+ NSTEPSPERPAGE=          1,
  ICOLOUREACHSTEP=T,
  ICHANGESTYLES=F,
  TILE=T,
@@ -880,3 +880,104 @@ snap_00097
 snap_00098
 snap_00099
 snap_00100
+snap_00101
+snap_00102
+snap_00103
+snap_00104
+snap_00105
+snap_00106
+snap_00107
+snap_00108
+snap_00109
+snap_00110
+snap_00111
+snap_00112
+snap_00113
+snap_00114
+snap_00115
+snap_00116
+snap_00117
+snap_00118
+snap_00119
+snap_00120
+snap_00121
+snap_00122
+snap_00123
+snap_00124
+snap_00125
+snap_00126
+snap_00127
+snap_00128
+snap_00129
+snap_00130
+snap_00131
+snap_00132
+snap_00133
+snap_00134
+snap_00135
+snap_00136
+snap_00137
+snap_00138
+snap_00139
+snap_00140
+snap_00141
+snap_00142
+snap_00143
+snap_00144
+snap_00145
+snap_00146
+snap_00147
+snap_00148
+snap_00149
+snap_00150
+snap_00151
+snap_00152
+snap_00153
+snap_00154
+snap_00155
+snap_00156
+snap_00157
+snap_00158
+snap_00159
+snap_00160
+snap_00161
+snap_00162
+snap_00163
+snap_00164
+snap_00165
+snap_00166
+snap_00167
+snap_00168
+snap_00169
+snap_00170
+snap_00171
+snap_00172
+snap_00173
+snap_00174
+snap_00175
+snap_00176
+snap_00177
+snap_00178
+snap_00179
+snap_00180
+snap_00181
+snap_00182
+snap_00183
+snap_00184
+snap_00185
+snap_00186
+snap_00187
+snap_00188
+snap_00189
+snap_00190
+snap_00191
+snap_00192
+snap_00193
+snap_00194
+snap_00195
+snap_00196
+snap_00197
+snap_00198
+snap_00199
+snap_00200
+snap_00201

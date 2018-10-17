@@ -13,7 +13,7 @@ subroutine get_accel(x, a, m, np)
 
   a = 0. ! initially set all to zero
   do i=1,np
-    do j=1,np
+    do j=1,2
       if (j /= i) then ! make sure that j not equal to i to not
                        ! divide by zero
         dx = x(:,i) - x(:,j)
@@ -36,9 +36,9 @@ real function potential(x,m,np)
   real :: phi, r
   integer :: i, j
   potential = 0.
-  do i=1,np
+  do i=1,2
     phi = 0. ! potential for particle i
-    do j=i+1,np ! notice loop indices
+    do j=i+1,2 ! notice loop indices
       dx = x(:,i) - x(:,j)
       r = sqrt(dot_product(dx,dx))
       phi = phi - m(j)/r
