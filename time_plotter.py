@@ -44,7 +44,7 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
-f = plt.figure(figsize=[9,6])
+f = plt.figure(figsize=[12,4])
 
 plt.plot(ts,np.sqrt(xs**2+ys**2), label=r'$x$')
 plt.axvline(x=2*3.55431,color='grey',linestyle='--')

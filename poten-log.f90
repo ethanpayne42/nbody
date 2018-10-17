@@ -2,8 +2,8 @@ module poten
   implicit none
   ! this module defines the isochrone potential
   real, parameter :: v0 = 1.0
-  real, parameter :: q = 0.7 !0.8
-  real, parameter :: Rc = 0.0 !0.2
+  real, parameter :: q = 0.8
+  real, parameter :: Rc = 0.2
 
 
 contains
